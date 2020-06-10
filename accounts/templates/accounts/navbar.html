@@ -1,0 +1,30 @@
+<style>
+  .hello-msg {
+    font-size: 16px;
+    color: white;
+    margin-right: 20px;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  {% if request.user.is_staff %}
+    <a class="navbar-brand" href="{% url 'home' %}">Django Trial</a>
+  {% endif %}
+  {% if not request.user.is_staff %}
+    <a class="navbar-brand" href="###">Django Trial</a>
+  {% endif %}
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'products' %}">Products</a>
+      </li>
+    </ul>
+  </div>
+
+  <span class="hello-msg">Hello, {{ request.user }}</span>
+  <span><a class="hello-msg" href="{% url 'signout' %}">Logout</a></span>
+</nav>
